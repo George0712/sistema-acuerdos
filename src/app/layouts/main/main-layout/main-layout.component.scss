@@ -6,6 +6,7 @@
   background: var(--background-container, #e2e3d1);
   min-height: 100%;
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -23,7 +24,7 @@
   flex: 1;
   overflow: hidden;
 }
-.container {
+.container-tabs {
   background: var(--background-background, #f2eddf);
   border-radius: 9999px;
   border-style: solid;

@@ -1,37 +1,43 @@
-<div class="container">
+<div class="container2">
   <div class="title-container">
     <div class="icon-number">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-number-1 icon icon-tabler icons-tabler-outline icon-tabler-number-4"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 20v-15l-8 11h10" /></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-number-4"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 20v-15l-8 11h10" /></svg>
     </div>
     <div class="title">Adjuntar Archivos</div>
   </div>
-  <div class="item-file">
+
+  <input type="file" id="fileInputInfractor" style="display: none;" (change)="onFileSelected($event, 'infractor')" accept=".pdf,.jpg,.jpeg,.png" />
+  <div class="item-file" [class.has-file]="hasFile('infractor')">
     <div class="icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" /></svg>
     </div>
-    <div class="label">Documento de identidad del infractor</div>
+    <div class="label" [class.file-selected]="hasFile('infractor')">{{ getFileName('infractor') }}</div>
     <div class="spacer"></div>
-    <div class="button">
+    <div class="button" (click)="triggerFileInput('fileInputInfractor')">
       <div class="label2">Subir Archivo</div>
     </div>
   </div>
-  <div class="item-file">
+
+  <input type="file" id="fileInputApoderado" style="display: none;" (change)="onFileSelected($event, 'apoderado')" accept=".pdf,.jpg,.jpeg,.png" />
+  <div class="item-file" [class.has-file]="hasFile('apoderado')">
     <div class="icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" /></svg>
     </div>
-    <div class="label">Documento de identidad del apoderado</div>
+    <div class="label" [class.file-selected]="hasFile('apoderado')">{{ getFileName('apoderado') }}</div>
     <div class="spacer"></div>
-    <div class="button">
+    <div class="button" (click)="triggerFileInput('fileInputApoderado')">
       <div class="label2">Subir Archivo</div>
     </div>
   </div>
-  <div class="item-file">
+
+  <input type="file" id="fileInputCarta" style="display: none;" (change)="onFileSelected($event, 'carta')" accept=".pdf,.jpg,.jpeg,.png" />
+  <div class="item-file" [class.has-file]="hasFile('carta')">
     <div class="icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-paperclip"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" /></svg>
     </div>
-    <div class="label">Carta de autorización</div>
+    <div class="label" [class.file-selected]="hasFile('carta')">{{ getFileName('carta') }}</div>
     <div class="spacer"></div>
-    <div class="button">
+    <div class="button" (click)="triggerFileInput('fileInputCarta')">
       <div class="label2">Subir Archivo</div>
     </div>
   </div>
