@@ -1,1 +1,87 @@
 @import "tailwindcss";
+
+/* Global CSS Variables */
+:root {
+  /* Colors */
+  --primary-primary: #4e580e;
+  --primary-primary-container: #d3d936;
+  --primary-primary-ligth: #d6d98f;
+  --primary-primary-accent: #bfd132;
+  --primary-on-primary-container: #3f4806;
+  --secondary-secondary: #094a61;
+  --secondary-secondary-container: #b6e1f2;
+  --secondary-on-secondary-container: #063546;
+  --tertiary-tertiary: #a60321;
+  --tertiary-tertiary-container: #fdd8d7;
+  --tertiary-on-tertiary-container: #6b0518;
+  --background-container: #e2e3d1;
+  --background-background: #f2eddf;
+  --background-on-background: #191c1d;
+  --error-error: #ba1a1a;
+  --error-error-container: #ffdad6;
+  --error-on-error-container: #410002;
+
+  /* Fonts */
+  --h1-font-family: Inter-Bold, sans-serif;
+  --h1-font-size: 32px;
+  --h1-line-height: 120%;
+  --h1-font-weight: 700;
+  --h1-font-style: normal;
+  --h2-font-family: Inter-Medium, sans-serif;
+  --h2-font-size: 22px;
+  --h2-line-height: 130%;
+  --h2-font-weight: 500;
+  --h2-font-style: normal;
+  --h3-font-family: Inter-SemiBold, sans-serif;
+  --h3-font-size: 18px;
+  --h3-line-height: 130%;
+  --h3-font-weight: 600;
+  --h3-font-style: normal;
+  --body-text-1-font-family: Inter-Medium, sans-serif;
+  --body-text-1-font-size: 14px;
+  --body-text-1-line-height: 140%;
+  --body-text-1-font-weight: 500;
+  --body-text-1-font-style: normal;
+  --field-text-1-font-family: Inter-Regular, sans-serif;
+  --field-text-1-font-size: 14px;
+  --field-text-1-line-height: 140%;
+  --field-text-1-font-weight: 400;
+  --field-text-1-font-style: normal;
+  --caption1-font-family: Inter-Regular, sans-serif;
+  --caption1-font-size: 12px;
+  --caption1-line-height: 150%;
+  --caption1-font-weight: 400;
+  --caption1-font-style: normal;
+  --button-font-family: Inter-SemiBold, sans-serif;
+  --button-font-size: 15px;
+  --button-line-height: 120%;
+  --button-font-weight: 600;
+  --button-font-style: normal;
+  --header-table-font-family: Inter-SemiBold, sans-serif;
+  --header-table-font-size: 14px;
+  --header-table-line-height: 130%;
+  --header-table-font-weight: 600;
+  --header-table-font-style: normal;
+  --content-table-font-family: Inter-Regular, sans-serif;
+  --content-table-font-size: 14px;
+  --content-table-line-height: 140%;
+  --content-table-font-weight: 400;
+  --content-table-font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--body-text-1-font-family, "Inter-Medium", sans-serif);
+  background: var(--background-background, #f2eddf);
+}

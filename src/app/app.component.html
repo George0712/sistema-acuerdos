@@ -1,5 +1,9 @@
-<h1 class="text-3xl font-bold">
-  Hello world!
-</h1>
-
-<router-outlet />
+<div class="app-container">
+  <app-header></app-header>
+  <div class="body-wrapper">
+    <app-sidebar></app-sidebar>
+    <main class="main-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

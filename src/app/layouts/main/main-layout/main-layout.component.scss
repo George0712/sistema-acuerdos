@@ -1,0 +1,381 @@
+.desktop-datos-contacto,
+.desktop-datos-contacto * {
+  box-sizing: border-box;
+}
+.desktop-datos-contacto {
+  background: var(--background-background, #f2eddf);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  background: var(--background-container, #e2e3d1);
+  border-radius: 40px 40px 0px 40px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1336px;
+  margin: 0 auto;
+  flex: 1;
+}
+.container {
+  background: var(--background-background, #f2eddf);
+  border-radius: 9999px;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 1px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.tab {
+  background: var(--secondary-secondary-container, #b6e1f2);
+  border-radius: 999px;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+}
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+.user {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.label {
+  color: #000000;
+  text-align: left;
+  font-family: var(--h3-font-family, "Inter-SemiBold", sans-serif);
+  font-size: var(--h3-font-size, 18px);
+  line-height: var(--h3-line-height, 130%);
+  font-weight: var(--h3-font-weight, 600);
+  position: relative;
+}
+.tab2 {
+  border-radius: 999px;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+}
+.file {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.dollar-sign {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.check {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+.body {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
+}
+.container2 {
+  background: var(--background-background, #f2eddf);
+  border-radius: 16px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-width: 1px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 1288px;
+  position: relative;
+}
+.title-container {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.icon-number {
+  background: var(--secondary-secondary, #094a61);
+  border-radius: 50px;
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  aspect-ratio: 1;
+}
+.tabler-number-1 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.title {
+  color: #000000;
+  text-align: left;
+  font-family: var(--h3-font-family, "Inter-SemiBold", sans-serif);
+  font-size: var(--h3-font-size, 18px);
+  line-height: var(--h3-line-height, 130%);
+  font-weight: var(--h3-font-weight, 600);
+  position: relative;
+}
+.item-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.label2 {
+  color: #000000;
+  text-align: left;
+  font-family: var(--body-text-1-font-family, "Inter-Medium", sans-serif);
+  font-size: var(--body-text-1-font-size, 14px);
+  line-height: var(--body-text-1-line-height, 140%);
+  font-weight: var(--body-text-1-font-weight, 500);
+  position: relative;
+}
+.input-text {
+  background: #f4f3e9;
+  border-radius: 999px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.05);
+  border-width: 1px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.valor {
+  color: rgba(0, 0, 0, 0.4);
+  text-align: left;
+  font-family: var(--field-text-1-font-family, "Inter-Regular", sans-serif);
+  font-size: var(--field-text-1-font-size, 14px);
+  line-height: var(--field-text-1-line-height, 140%);
+  font-weight: var(--field-text-1-font-weight, 400);
+  position: relative;
+}
+.search {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+  overflow: visible;
+}
+.tabler-number-2 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.checkbox-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.checkbox-and-label {
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-300, 12px);
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.checkbox {
+  background: var(--var-sds-color-background-default-default, #ffffff);
+  border-radius: var(--var-sds-size-radius-100, 4px);
+  border-style: solid;
+  border-color: var(--var-sds-color-border-brand-tertiary, #757575);
+  border-width: 1px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.label3 {
+  color: var(--var-sds-color-text-default-default, #1e1e1e);
+  text-align: left;
+  font-family: var(--body-text-1-font-family, "Inter-Medium", sans-serif);
+  font-size: var(--body-text-1-font-size, 14px);
+  line-height: var(--body-text-1-line-height, 140%);
+  font-weight: var(--body-text-1-font-weight, 500);
+  position: relative;
+  flex: 1;
+}
+.tabler-number-3 {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+.frame-427319119 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.input-text2 {
+  background: #f4f3e9;
+  border-radius: 999px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.05);
+  border-width: 1px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.group-item-input {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  position: relative;
+}
+.item-input2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+}
+.icon-down {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.icon-down2 {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.footer {
+  background: rgba(51, 51, 51, 0.2);
+  border-radius: 16px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.05);
+  border-width: 1px;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 108px;
+  position: relative;
+  overflow: hidden;
+}
+.copyright {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 400;
+  position: absolute;
+  left: 427px;
+  top: 43px;
+}
+
+
+
+
