@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InfractorService, Infractor } from '../../../../shared/services/infractor.service';
+import { AcuerdoStateService } from '../../../../shared/services/acuerdo-state.service';
 
 @Component({
   selector: 'app-datos-contacto',
@@ -34,7 +35,10 @@ export class DatosContactoComponent {
   telefonoAlternativo = '';
   correoAdicional = '';
 
-  constructor(private infractorService: InfractorService) {}
+  constructor(
+    private infractorService: InfractorService,
+    private acuerdoStateService: AcuerdoStateService
+  ) {}
 
   buscarInfractor(): void {
     if (!this.numeroDocumentoBusqueda.trim()) {
@@ -50,10 +54,12 @@ export class DatosContactoComponent {
         this.buscando = false;
         if (infractor) {
           this.infractorEncontrado = infractor;
+          this.acuerdoStateService.setInfractor(infractor);
           this.cargarDatosInfractor(infractor);
           this.mensajeError = '';
         } else {
           this.infractorEncontrado = null;
+          this.acuerdoStateService.setInfractor(null);
           this.mensajeError = 'No se encontró ningún infractor con ese número de documento';
         }
       },

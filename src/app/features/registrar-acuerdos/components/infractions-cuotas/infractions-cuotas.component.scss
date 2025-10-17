@@ -1,0 +1,220 @@
+/* Component-specific: Wrapper for containers */
+.infractions-cuotas-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Component-specific: Table container */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+/* Component-specific: Violations table */
+.violations-table,
+.installments-table {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #b9b9b9;
+  border-collapse: collapse;
+  font-family: "Inter-Regular", sans-serif;
+
+  thead {
+    background: var(--background-container, #e2e3d1);
+
+    tr {
+      border-bottom: 1px solid #b9b9b9;
+    }
+
+    th {
+      padding: 10px 12px;
+      text-align: left;
+      font-family: "Inter-SemiBold", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #000000;
+      vertical-align: middle;
+
+      &.checkbox-column {
+        width: 50px;
+        text-align: center;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      background: #F4F3E9;
+      border-bottom: 1px solid #b9b9b9;
+      transition: background 0.2s ease;
+
+      &:hover:not(.empty-state) {
+        background: #a8a8a8;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.empty-state {
+        background: #F4F3E9;
+
+        &:hover {
+          background: #F4F3E9;
+        }
+
+        td {
+          padding: 10px 12px;
+          text-align: center;
+          color: #000000;
+          font-family: "Inter-Regular", sans-serif;
+          font-size: 12px;
+        }
+      }
+    }
+
+    td {
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #000000;
+      vertical-align: middle;
+
+      &.checkbox-column {
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* Component-specific: Checkbox input */
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--secondary-secondary, #094a61);
+  display: block;
+  margin: 0 auto;
+  appearance: auto;
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+/* Component-specific: Status badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-block;
+
+  &.status-pending {
+    color: var(--colors-orange, #ff8d28);
+    background: rgba(255, 141, 40, 0.1);
+  }
+
+  &.status-scheduled {
+    color: var(--colors-blue, #0088ff);
+    background: rgba(0, 136, 255, 0.1);
+  }
+}
+
+/* Component-specific: View button */
+.btn-view {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  color: #000000;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Component-specific: Installments form */
+.installments-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.item-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.input-text2 {
+  background: #f4f3e9;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.valor-readonly {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+}
+
+/* Component-specific: Generate button */
+.button-generate {
+  background: var(--tertiary-tertiary, #a60321);
+  border-radius: 999px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+
+  &:hover:not(:disabled) {
+    background: #8a0219;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* Component-specific: Icon dropdown wrapper */
+.icon-dropdown {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--secondary-secondary, #094a61);
+
+  svg {
+    stroke: var(--secondary-secondary, #094a61);
+  }
+}
