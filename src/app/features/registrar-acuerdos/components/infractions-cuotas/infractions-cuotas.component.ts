@@ -3,23 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Infractor } from '../../../../shared/services/infractor.service';
-import { AcuerdoStateService } from '../../../../shared/services/acuerdo-state.service';
-
-interface Infraction {
-  id: number;
-  numeroComparendo: string;
-  fecha: string;
-  valor: number;
-  estado: string;
-  selected: boolean;
-}
-
-interface Installment {
-  numero: number;
-  fechaVencimiento: string;
-  valor: number;
-  estado: string;
-}
+import { AcuerdoStateService, Infraction, Installment } from '../../../../shared/services/acuerdo-state.service';
 
 @Component({
   selector: 'app-infractions-cuotas',
@@ -102,6 +86,15 @@ export class InfractionsCuotasComponent implements OnInit, OnDestroy {
     }
 
     this.installmentsGenerated = true;
+
+    // Save acuerdo data to service
+    this.acuerdoStateService.setAcuerdoData({
+      selectedInfractions: this.infractions.filter(inf => inf.selected),
+      installments: this.installments,
+      numeroCuotas: this.numeroCuotas,
+      tipoInteres: this.tipoInteres,
+      fechaInicial: this.fechaInicial
+    });
   }
 
   formatDate(date: Date): string {
