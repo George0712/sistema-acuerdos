@@ -95,8 +95,17 @@
   background: var(--tertiary-tertiary, #a60321);
   color: var(--background-background, #f2eddf);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #8a0219;
+  }
+
+  &:active:not(:disabled) {
+    background: #c7043e;
+  }
+
+  &:disabled {
+    background: #999999;
+    cursor: not-allowed;
   }
 }
 
@@ -104,8 +113,17 @@
   background: var(--secondary-secondary, #094a61);
   color: var(--background-background, #f2eddf);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #073a4d;
+  }
+
+  &:active:not(:disabled) {
+    background: #0b5f7d;
+  }
+
+  &:disabled {
+    background: #999999;
+    cursor: not-allowed;
   }
 }
 
@@ -266,8 +284,17 @@
   background: var(--tertiary-tertiary, #a60321);
   color: var(--background-background, #f2eddf);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #8a0219;
+  }
+
+  &:active:not(:disabled) {
+    background: #c7043e;
+  }
+
+  &:disabled {
+    background: #999999;
+    cursor: not-allowed;
   }
 }
 
@@ -275,8 +302,17 @@
   background: #2fac4e;
   color: var(--background-background, #f2eddf);
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #278f3f;
+  }
+
+  &:active:not(:disabled) {
+    background: #3dc95f;
+  }
+
+  &:disabled {
+    background: #999999;
+    cursor: not-allowed;
   }
 }
 

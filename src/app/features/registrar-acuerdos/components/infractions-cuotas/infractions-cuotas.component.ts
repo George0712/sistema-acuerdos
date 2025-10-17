@@ -24,10 +24,22 @@ export class InfractionsCuotasComponent implements OnInit, OnDestroy {
   tipoInteres: string = '';
 
   installmentsGenerated = false;
+  showInfractionModal = false;
+  selectedInfraction: Infraction | null = null;
 
   constructor(private acuerdoStateService: AcuerdoStateService) {}
 
   ngOnInit(): void {
+    // Load existing acuerdo data if available
+    const existingData = this.acuerdoStateService.getAcuerdoData();
+    if (existingData) {
+      this.numeroCuotas = existingData.numeroCuotas;
+      this.fechaInicial = existingData.fechaInicial;
+      this.tipoInteres = existingData.tipoInteres;
+      this.installments = existingData.installments;
+      this.installmentsGenerated = existingData.installments.length > 0;
+    }
+
     this.infractorSubscription = this.acuerdoStateService.infractor$.subscribe(infractor => {
       this.infractorEncontrado = infractor;
       if (infractor) {
@@ -112,6 +124,16 @@ export class InfractionsCuotasComponent implements OnInit, OnDestroy {
     }).format(value);
   }
 
+  viewInfractionDetails(infraction: Infraction): void {
+    this.selectedInfraction = infraction;
+    this.showInfractionModal = true;
+  }
+
+  closeInfractionModal(): void {
+    this.showInfractionModal = false;
+    this.selectedInfraction = null;
+  }
+
   private loadInfractions(): void {
     // Simulated infractions data - in a real app, this would come from a service
     this.infractions = [
@@ -121,7 +143,12 @@ export class InfractionsCuotasComponent implements OnInit, OnDestroy {
         fecha: '15/05/2024',
         valor: 450000,
         estado: 'Pendiente',
-        selected: false
+        selected: false,
+        codigo: '098765',
+        placa: 'UYX-765',
+        numeroResolucion: '160',
+        fechaResolucion: '15/05/2004',
+        interesMora: '22%'
       },
       {
         id: 2,
@@ -129,8 +156,22 @@ export class InfractionsCuotasComponent implements OnInit, OnDestroy {
         fecha: '10/08/2024',
         valor: 300000,
         estado: 'Pendiente',
-        selected: false
+        selected: false,
+        codigo: '098766',
+        placa: 'ABC-123',
+        numeroResolucion: '161',
+        fechaResolucion: '10/08/2004',
+        interesMora: '18%'
       }
     ];
+
+    // Restore selection state from existing acuerdo data
+    const existingData = this.acuerdoStateService.getAcuerdoData();
+    if (existingData && existingData.selectedInfractions.length > 0) {
+      const selectedIds = existingData.selectedInfractions.map(inf => inf.id);
+      this.infractions.forEach(inf => {
+        inf.selected = selectedIds.includes(inf.id);
+      });
+    }
   }
 }

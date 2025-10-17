@@ -12,111 +12,78 @@
   overflow-y: auto;
 }
 .icon2 {
-  border-radius: 99px;
-  padding: 8px;
+  border-radius: 50%;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
   flex-shrink: 0;
+  width: 72px;
   height: 72px;
   position: relative;
-  aspect-ratio: 1;
-}
-.menu {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
 }
 .icon3 {
   background: var(--primary-primary-ligth, #d6d98f);
-  border-radius: 99px;
-  padding: 8px;
+  border-radius: 50%;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
   flex-shrink: 0;
+  width: 72px;
   height: 72px;
   position: relative;
-  aspect-ratio: 1;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: var(--primary-primary-accent, #bfd132);
+  }
 }
-.file-text {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
-}
-.search2 {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
-}
-.monitor {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
-}
-.shield {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
-}
+
 .icon4 {
-  padding: 8px;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
   flex: 1;
   position: relative;
 }
+
 .icon5 {
-  padding: 8px;
+  border-radius: 50%;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
   flex-shrink: 0;
+  width: 72px;
   height: 72px;
   position: relative;
-  aspect-ratio: 1;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
 }
-.settings {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
-}
+
+// Icon SVG styles
+.menu,
+.file-text,
+.search2,
+.monitor,
+.shield,
+.settings,
 .log-out {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
   position: relative;
-  overflow: visible;
-  aspect-ratio: 1;
 }

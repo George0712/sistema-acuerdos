@@ -3,6 +3,7 @@ import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { FooterComponent } from '../../../shared/components/layout/footer/footer.component';
+import { AcuerdoStateService } from '../../../shared/services/acuerdo-state.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -14,7 +15,10 @@ import { FooterComponent } from '../../../shared/components/layout/footer/footer
 export class MainLayoutComponent implements OnInit {
   activeTab = 'datos-contacto';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private acuerdoStateService: AcuerdoStateService
+  ) {}
 
   ngOnInit(): void {
     // Set initial active tab based on current route
@@ -41,11 +45,19 @@ export class MainLayoutComponent implements OnInit {
   }
 
   navigateTo(route: string): void {
+    // Prevent navigation to confirmation if not ready
+    if (route === 'confirmation' && !this.isConfirmationEnabled()) {
+      return;
+    }
     this.activeTab = route;
     this.router.navigate(['/registrar-acuerdos', route]);
   }
 
   isActive(route: string): boolean {
     return this.activeTab === route;
+  }
+
+  isConfirmationEnabled(): boolean {
+    return this.acuerdoStateService.isConfirmationReady();
   }
 }

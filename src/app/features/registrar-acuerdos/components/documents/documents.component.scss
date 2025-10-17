@@ -29,6 +29,13 @@
   position: relative;
 }
 
+.label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
 .label {
   color: rgba(0, 0, 0, 0.4);
   text-align: left;
@@ -41,6 +48,14 @@
   &.file-selected {
     color: #000000;
   }
+}
+
+.optional-tag {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .spacer {
@@ -68,10 +83,20 @@
   flex-shrink: 0;
   position: relative;
   cursor: pointer;
+  border: none;
   transition: background 0.3s ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: #3d4509;
+  }
+
+  &:active:not(:disabled) {
+    background: #677010;
+  }
+
+  &:disabled {
+    background: #999999;
+    cursor: not-allowed;
   }
 }
 

@@ -52,9 +52,13 @@
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
 }
-.tab:hover {
-  background: var(--secondary-secondary-container, #a5d5e8);
+.tab:hover:not(.tab-disabled) {
+  background: #a5d5e8;
+}
+.tab:active:not(.tab-disabled) {
+  background: #c7eef9;
 }
 .tab2 {
   border-radius: 999px;
@@ -68,9 +72,33 @@
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: none;
+  background: transparent;
 }
-.tab2:hover {
+.tab2:hover:not(.tab-disabled) {
   background: rgba(0, 0, 0, 0.05);
+}
+.tab2:active:not(.tab-disabled) {
+  background: rgba(0, 0, 0, 0.02);
+}
+.tab-disabled {
+  background: transparent !important;
+  cursor: not-allowed !important;
+  pointer-events: auto;
+
+  .label {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  .icon {
+    opacity: 0.4;
+  }
+}
+.tab-disabled:hover {
+  background: transparent !important;
+}
+.tab-disabled:active {
+  background: transparent !important;
 }
 .icon {
   flex-shrink: 0;

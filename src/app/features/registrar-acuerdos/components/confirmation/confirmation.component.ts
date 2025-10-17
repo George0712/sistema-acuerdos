@@ -42,6 +42,10 @@ export class ConfirmationComponent implements OnInit {
     return this.acuerdoData.installments[0].valor;
   }
 
+  get isDataComplete(): boolean {
+    return this.acuerdoStateService.isConfirmationReady();
+  }
+
   getCurrentDate(): string {
     const today = new Date();
     const day = String(today.getDate()).padStart(2, '0');
@@ -80,6 +84,9 @@ export class ConfirmationComponent implements OnInit {
 
   createNewAcuerdo(): void {
     this.showModal = false;
-    // TODO: Navigate to new agreement or reset form
+    // Clear all stored data
+    this.acuerdoStateService.clearAll();
+    // Navigate back to first step
+    window.location.href = '/registrar-acuerdos/datos-contacto';
   }
 }

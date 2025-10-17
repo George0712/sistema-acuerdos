@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InfractorService, Infractor } from '../../../../shared/services/infractor.service';
 import { AcuerdoStateService } from '../../../../shared/services/acuerdo-state.service';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-datos-contacto',
@@ -11,7 +13,10 @@ import { AcuerdoStateService } from '../../../../shared/services/acuerdo-state.s
   templateUrl: './datos-contacto.component.html',
   styleUrl: './datos-contacto.component.scss'
 })
-export class DatosContactoComponent {
+export class DatosContactoComponent implements OnInit, OnDestroy {
+  private readonly STORAGE_KEY = 'acuerdo_form_data';
+  private saveSubject = new Subject<void>();
+
   // Búsqueda de infractor
   numeroDocumentoBusqueda = '';
   infractorEncontrado: Infractor | null = null;
@@ -38,7 +43,25 @@ export class DatosContactoComponent {
   constructor(
     private infractorService: InfractorService,
     private acuerdoStateService: AcuerdoStateService
-  ) {}
+  ) {
+    // Auto-save form data with debounce
+    this.saveSubject.pipe(debounceTime(500)).subscribe(() => {
+      this.saveFormData();
+    });
+  }
+
+  ngOnInit(): void {
+    this.loadFormData();
+    this.infractorEncontrado = this.acuerdoStateService.getInfractor();
+  }
+
+  ngOnDestroy(): void {
+    this.saveSubject.complete();
+  }
+
+  onFormChange(): void {
+    this.saveSubject.next();
+  }
 
   buscarInfractor(): void {
     if (!this.numeroDocumentoBusqueda.trim()) {
@@ -81,6 +104,8 @@ export class DatosContactoComponent {
 
     // Marcar que se usa la misma dirección por defecto
     this.usarMismaDireccion = true;
+
+    this.saveFormData();
   }
 
   limpiarBusqueda(): void {
@@ -93,6 +118,7 @@ export class DatosContactoComponent {
     this.telefonoAlternativo = '';
     this.correoAdicional = '';
     this.usarMismaDireccion = false;
+    this.saveFormData();
   }
 
   formatDate(dateString: string): string {
@@ -101,5 +127,48 @@ export class DatosContactoComponent {
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
+  }
+
+  private saveFormData(): void {
+    const formData = {
+      registrarApoderado: this.registrarApoderado,
+      nombreApoderado: this.nombreApoderado,
+      fechaNacimientoApoderado: this.fechaNacimientoApoderado,
+      tipoDocumentoApoderado: this.tipoDocumentoApoderado,
+      numeroDocumentoApoderado: this.numeroDocumentoApoderado,
+      ciudadExpedicionApoderado: this.ciudadExpedicionApoderado,
+      tarjetaProfesionalApoderado: this.tarjetaProfesionalApoderado,
+      usarMismaDireccion: this.usarMismaDireccion,
+      direccion: this.direccion,
+      departamento: this.departamento,
+      ciudad: this.ciudad,
+      telefonoAlternativo: this.telefonoAlternativo,
+      correoAdicional: this.correoAdicional
+    };
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(formData));
+  }
+
+  private loadFormData(): void {
+    try {
+      const stored = localStorage.getItem(this.STORAGE_KEY);
+      if (stored) {
+        const formData = JSON.parse(stored);
+        this.registrarApoderado = formData.registrarApoderado || false;
+        this.nombreApoderado = formData.nombreApoderado || '';
+        this.fechaNacimientoApoderado = formData.fechaNacimientoApoderado || '';
+        this.tipoDocumentoApoderado = formData.tipoDocumentoApoderado || '';
+        this.numeroDocumentoApoderado = formData.numeroDocumentoApoderado || '';
+        this.ciudadExpedicionApoderado = formData.ciudadExpedicionApoderado || '';
+        this.tarjetaProfesionalApoderado = formData.tarjetaProfesionalApoderado || '';
+        this.usarMismaDireccion = formData.usarMismaDireccion || false;
+        this.direccion = formData.direccion || '';
+        this.departamento = formData.departamento || '';
+        this.ciudad = formData.ciudad || '';
+        this.telefonoAlternativo = formData.telefonoAlternativo || '';
+        this.correoAdicional = formData.correoAdicional || '';
+      }
+    } catch (error) {
+      console.error('Error loading form data from localStorage:', error);
+    }
   }
 }

@@ -261,9 +261,10 @@ label {
   }
 
   &:disabled {
-    background: #e8e8e8;
+    background: #f4f3e9;
+    color: rgba(0, 0, 0, 0.4);
     cursor: not-allowed;
-    opacity: 0.6;
+    border-color: rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -274,6 +275,8 @@ select.input-field {
 
   &:disabled {
     cursor: not-allowed;
+    background: #f4f3e9;
+    color: rgba(0, 0, 0, 0.4);
   }
 }
 
