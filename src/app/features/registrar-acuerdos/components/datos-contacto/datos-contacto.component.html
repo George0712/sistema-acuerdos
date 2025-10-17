@@ -11,13 +11,72 @@
   <div class="item-input">
     <label class="label2">Número de documento</label>
     <div class="input-wrapper">
-      <input type="text" class="input-field" placeholder="Ingrese número de documento" />
-      <div class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search">
+      <input
+        type="text"
+        class="input-field"
+        placeholder="Ingrese número de documento"
+        [(ngModel)]="numeroDocumentoBusqueda"
+        (keyup.enter)="buscarInfractor()" />
+      <div class="icon-search">
+        <svg *ngIf="!buscando" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
           <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"/>
           <path d="M21 21l-6 -6"/>
         </svg>
+        <span *ngIf="buscando" class="loading-spinner"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="mensajeError" class="error-message">
+    {{ mensajeError }}
+  </div>
+
+  <!-- Campos con información del infractor encontrado (bloqueados) -->
+  <div *ngIf="infractorEncontrado" class="infractor-fields">
+    <!-- Row 1: Nombre completo -->
+    <div class="item-input">
+      <div class="label">Nombre completo</div>
+      <div class="input-text2">
+        <div class="valor">{{ infractorEncontrado.nombreCompleto }}</div>
+      </div>
+    </div>
+
+    <div class="group-item-input2">
+      <div class="item-input2">
+        <div class="label">Ciudad de expedición del documento</div>
+        <div class="input-text2">
+          <div class="valor">{{ infractorEncontrado.ciudad.charAt(0).toUpperCase() + infractorEncontrado.ciudad.slice(1) }}</div>
+        </div>
+      </div>
+      <div class="item-input2">
+        <div class="label">Fecha de nacimiento</div>
+        <div class="input-text2">
+          <div class="valor">{{ formatDate(infractorEncontrado.fechaNacimiento) }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-input">
+      <div class="label">Dirección completa</div>
+      <div class="input-text2">
+        <div class="valor">{{ infractorEncontrado.direccion }}</div>
+      </div>
+    </div>
+
+    <div class="group-item-input2">
+      <div class="item-input2">
+        <div class="label">Correo electrónico</div>
+        <div class="input-text2">
+          <div class="valor">{{ infractorEncontrado.correoElectronico }}</div>
+        </div>
+      </div>
+      <div class="item-input2">
+        <div class="label">Teléfono</div>
+        <div class="input-text2">
+          <div class="valor">{{ infractorEncontrado.telefonoPrincipal }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -41,15 +100,21 @@
     </label>
   </div>
 
-  <div class="frame-427319119" *ngIf="registrarApoderado">
-    <div class="item-input">
-      <label class="label2">Nombre completo del apoderado</label>
-      <input type="text" class="input-field" placeholder="Ingrese el nombre completo" [(ngModel)]="nombreApoderado" />
+  <div class="attorney-fields" *ngIf="registrarApoderado">
+    <div class="group-item-input2">
+      <div class="item-input2">
+        <label>Nombre completo del apoderado</label>
+        <input type="text" class="input-field" placeholder="Ingrese el nombre completo" [(ngModel)]="nombreApoderado" />
+      </div>
+      <div class="item-input2">
+        <label>Fecha de nacimiento</label>
+        <input type="date" class="input-field" [(ngModel)]="fechaNacimientoApoderado" />
+      </div>
     </div>
 
-    <div class="group-item-input">
+    <div class="group-item-input3">
       <div class="item-input2">
-        <label class="label2">Tipo de documento</label>
+        <label>Tipo de documento</label>
         <div class="select-wrapper">
           <select class="input-field" [(ngModel)]="tipoDocumentoApoderado">
             <option value="">Selecciona</option>
@@ -58,34 +123,38 @@
             <option value="pasaporte">Pasaporte</option>
           </select>
           <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-down">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M6 9l6 6l6 -6"/>
             </svg>
           </div>
         </div>
       </div>
-
       <div class="item-input2">
-        <label class="label2">Número de documento</label>
+        <label>Número de documento</label>
         <input type="text" class="input-field" placeholder="Ingrese el número" [(ngModel)]="numeroDocumentoApoderado" />
       </div>
-    </div>
-
-    <div class="group-item-input">
       <div class="item-input2">
-        <label class="label2">Teléfono de contacto</label>
-        <input type="tel" class="input-field" placeholder="Ingrese el teléfono" [(ngModel)]="telefonoApoderado" />
-      </div>
-
-      <div class="item-input2">
-        <label class="label2">Correo electrónico</label>
-        <input type="email" class="input-field" placeholder="Ingrese el correo" [(ngModel)]="correoApoderado" />
+        <label>Ciudad de expedición</label>
+        <div class="select-wrapper">
+          <select class="input-field" [(ngModel)]="ciudadExpedicionApoderado">
+            <option value="">Selecciona</option>
+            <option value="barranquilla">Barranquilla</option>
+            <option value="medellin">Medellín</option>
+            <option value="ipiales">Ipiales</option>
+          </select>
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M6 9l6 6l6 -6"/>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="item-input">
-      <label class="label2">Tarjeta profesional</label>
+      <label>Tarjeta profesional</label>
       <input type="text" class="input-field" placeholder="Ingrese número de tarjeta profesional" [(ngModel)]="tarjetaProfesionalApoderado" />
     </div>
   </div>
@@ -111,15 +180,15 @@
     </label>
   </div>
 
-  <div class="frame-427319119">
+  <div class="location-fields">
     <div class="item-input">
-      <label class="label2">Dirección completa</label>
+      <label>Dirección completa</label>
       <input type="text" class="input-field" placeholder="Ingrese la dirección" [disabled]="usarMismaDireccion" [(ngModel)]="direccion" />
     </div>
 
     <div class="group-item-input">
       <div class="item-input2">
-        <label class="label2">Departamento</label>
+        <label>Departamento</label>
         <div class="select-wrapper">
           <select class="input-field" [disabled]="usarMismaDireccion" [(ngModel)]="departamento">
             <option value="">Selecciona</option>
@@ -128,7 +197,7 @@
             <option value="nariño">Nariño</option>
           </select>
           <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-down">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M6 9l6 6l6 -6"/>
             </svg>
@@ -137,7 +206,7 @@
       </div>
 
       <div class="item-input2">
-        <label class="label2">Ciudad</label>
+        <label>Ciudad</label>
         <div class="select-wrapper">
           <select class="input-field" [disabled]="usarMismaDireccion" [(ngModel)]="ciudad">
             <option value="">Selecciona</option>
@@ -146,7 +215,7 @@
             <option value="ipiales">Ipiales</option>
           </select>
           <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-down2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M6 9l6 6l6 -6"/>
             </svg>
@@ -155,14 +224,16 @@
       </div>
     </div>
 
-    <div class="item-input3">
-      <label class="tel-fono-alternativo">Teléfono alternativo</label>
-      <input type="tel" class="input-field" placeholder="Ingrese el número de teléfono" [(ngModel)]="telefonoAlternativo" />
-    </div>
+    <div class="group-item-input2">
+      <div class="item-input2">
+        <label>Teléfono alternativo</label>
+        <input type="tel" class="input-field" placeholder="Ingrese el número de teléfono" [(ngModel)]="telefonoAlternativo" />
+      </div>
 
-    <div class="item-input3">
-      <label class="label2">Correo adicional</label>
-      <input type="email" class="input-field" placeholder="Ingrese el correo" [(ngModel)]="correoAdicional" />
+      <div class="item-input2">
+        <label>Correo adicional</label>
+        <input type="email" class="input-field" placeholder="Ingrese el correo" [(ngModel)]="correoAdicional" />
+      </div>
     </div>
   </div>
 </div>

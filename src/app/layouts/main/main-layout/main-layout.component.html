@@ -2,29 +2,29 @@
   <div class="main">
     <!-- Tabs Navigation -->
     <div class="container">
-      <div class="tab" (click)="navigateTo('datos-contacto')">
+      <div [ngClass]="{'tab': isActive('datos-contacto'), 'tab2': !isActive('datos-contacto')}" (click)="navigateTo('datos-contacto')">
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
         </div>
         <div class="label">Datos de Contacto</div>
       </div>
-      <div class="tab2" (click)="navigateTo('documents')">
+      <div [ngClass]="{'tab': isActive('documents'), 'tab2': !isActive('documents')}" (click)="navigateTo('documents')">
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="file"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /></svg>
         </div>
-        <div class="label">Datos del Acuerdo</div>
+        <div class="label">Documentos</div>
       </div>
-      <div class="tab2" (click)="navigateTo('infractions-cuotas')">
+      <div [ngClass]="{'tab': isActive('infractions-cuotas'), 'tab2': !isActive('infractions-cuotas')}" (click)="navigateTo('infractions-cuotas')">
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dollar-sign"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" /><path d="M12 3v3m0 12v3" /></svg>
         </div>
-        <div class="label">Detalles de Pago</div>
+        <div class="label">Infracciones y Cuotas</div>
       </div>
-      <div class="tab2" (click)="navigateTo('confirmation')">
+      <div [ngClass]="{'tab': isActive('confirmation'), 'tab2': !isActive('confirmation')}" (click)="navigateTo('confirmation')">
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="check"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>
         </div>
-        <div class="label">Revisión</div>
+        <div class="label">Confirmación</div>
       </div>
     </div>
 
